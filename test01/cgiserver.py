@@ -1,6 +1,6 @@
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
-server_address = ("", 8000)
+server_address = ("", 8080)
 
 
 handler_class = CGIHTTPRequestHandler #1 ハンドラを設定
