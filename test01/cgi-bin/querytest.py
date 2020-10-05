@@ -25,6 +25,8 @@ hoo = {1}
 form=cgi.FieldStorage()
 
 print("Content-Type: text/html; charset=utf-8")
+print("\r\n\r\n")
 
 #引数が無い場合、N/Aを返す
 print(html_body.format(form.getvalue("foo", "N/A"), form.getvalue("hoo", "N/A")))
+print("\r\n")
