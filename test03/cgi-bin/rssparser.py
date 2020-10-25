@@ -34,4 +34,3 @@ def parse_rss(url):
         # 各々登録した辞書をリストにまとめる
         rsslist.append(rssdict)
     return(rsslist)
-
