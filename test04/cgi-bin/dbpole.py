@@ -51,11 +51,9 @@ except BaseException:
 
 content = ""
 req = Request()
-test = 1
 
 if "language" in req.form:
     incrementvalue(cur, req.form["language"].value)
-    test = 0
 
 lang_dic = {}
 cur.execute("""SELECT name, value FROM language_pole;""")
@@ -71,7 +69,6 @@ res = Response()
 body = form_body.format(content)
 res.set_body(get_htmltemplate().format(body))
 print(res)
-print(req.form, test)
 cur.execute("""SELECT name, value FROM language_pole;""")
-print("sqlite3:", cur.fetchall())
+print("<br>sqlite3:", cur.fetchall())
 print("\r\n")
