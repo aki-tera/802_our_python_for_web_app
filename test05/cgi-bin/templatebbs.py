@@ -1,6 +1,9 @@
+import sys
+import io
 import sqlite3
 from string import Template
 from os import path
+import os
 
 # 前回作ったプログラムをインポートする
 from httphandler import Request, Response, get_htmltemplate
@@ -31,14 +34,21 @@ if "post" in f:
         value_dic["title"] = f.getvalue("titel", "")
         value_dic["url"] = f.getvalue("url", "")
     else:
-        cur.execute("""INSERT INTO bookmark(titel, url) VALUES(?, ?)""", f.getvalue("title", ""), F.getvalue("url", "")
+        cur.execute(
+            """INSERT INTO bookmark(titel, url) VALUES(?, ?)""", f.getvalue(
+                "title", ""), f.getvalue(
+                "url", ""))
         con.commit()
 
-res=Response()
-f=open(path.join(path.dirname(__file__), "bookmarkform.html"))
-t=Template(f.read())
+res = Response()
 
-body=t.substitute(value_dic)
+with open(path.join(path.dirname(".."), "bookmarkform.html"), encoding="utf-8") as f:
+    #res.set_body(path.join(os.path.abspath(path.dirname("..")), "bookmarkform.html") + "test")
+    #print(res)
+    t = Template(f.read())
+    body = t.substitute(value_dic)
+
+
 res.set_body(body)
 print(res)
 print("\r\n")
