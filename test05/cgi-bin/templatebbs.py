@@ -13,6 +13,7 @@ from httphandler import Request, Response
 import cgitb
 cgitb.enable(display=1)
 
+
 # 日本語を送受信する時にエラーにならないようにする為に必要。
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 

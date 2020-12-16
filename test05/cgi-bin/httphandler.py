@@ -73,7 +73,7 @@ class Response(object):
             self.set_header("Last-Modified", dtstr)
             headers = "\n".join(["{0}: {1}".format(k, v)
                                  for k, v in self.headers.items()])
-        return(headers+"\n\n"+self.body)
+        return(headers + "\n\n" + self.body)
 
     def __str__(self):
         """
