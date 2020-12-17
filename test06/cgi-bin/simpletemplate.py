@@ -27,3 +27,15 @@ class SimpleTemplate(object):
             with open(file_path, "r") as f:
                 body = f.read()
         body = body.replace("\r\n", "\n")
+        self.lines = body.split("\n")
+        self.sentences = ((if_pat, self.handle_if), (for_pat,
+                                                     self.handle_for), (value_pat, self.handle_value),)
+
+    def process(self,exit_pats=(), start_line=0, kws={}):
+        """テンプレートのレンダリング処理をする
+
+        Args:
+            exit_pats (tuple, optional): [description]. Defaults to ().
+            start_line (int, optional): [description]. Defaults to 0.
+            kws (dict, optional): [description]. Defaults to {}.
+        """
